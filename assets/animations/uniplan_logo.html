@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UniPlan Logo Animation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&display=swap" rel="stylesheet">
+<style>
+:root{--uni:#1b1c5a;--plan:#5b4ef0;--sub:#3d3f6b;--page:#ffffff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--uni:#ffffff;--plan:#8f8bff;--sub:#c9cbf5;--page:#12112a}}
+:root[data-theme="dark"]{--uni:#ffffff;--plan:#8f8bff;--sub:#c9cbf5;--page:#12112a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0}
+body{background:var(--page);font-family:'Poppins',system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.lockup{display:flex;align-items:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap;justify-content:center;padding:0 16px;cursor:pointer}
+svg.icon{width:clamp(92px,20vw,150px);flex:none;overflow:visible}
+.tile{fill:url(#g);opacity:0;transform-origin:60px 60px;transform:scale(.4)}
+.cap-line{fill:none;stroke:#fff;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.cap-fill,.band{fill:#fff;opacity:0}
+.tassel{transform-origin:92px 46px;opacity:0}
+.text{display:flex;flex-direction:column}
+.word{font-weight:800;font-size:clamp(52px,13vw,104px);line-height:1;letter-spacing:-2px;display:flex}
+.word span{display:inline-block;opacity:0;transform:translateY(55%) rotate(5deg);color:var(--uni)}
+.word .p{color:var(--plan)}
+.sub{font-weight:500;font-size:clamp(18px,4.2vw,34px);color:var(--sub);margin-top:6px;letter-spacing:.3px;opacity:0;clip-path:inset(0 100% 0 0)}
+.play .tile{animation:tile .8s .1s cubic-bezier(.3,1.5,.5,1) forwards}
+.play .cap-line{animation:draw 1s .6s cubic-bezier(.6,0,.2,1) forwards}
+.play .cap-fill,.play .band{animation:fade .5s 1.4s forwards}
+.play .tassel{animation:fade .3s 1.6s forwards,swing 1.3s 1.6s ease-in-out 2}
+.play .word span{animation:rise .6s calc(1.2s + var(--i)*.07s) cubic-bezier(.2,1.3,.4,1) forwards}
+.play .sub{animation:fade .3s 2s forwards,wipe .8s 2s ease-out forwards}
+@keyframes tile{to{opacity:1;transform:scale(1)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+@keyframes wipe{to{clip-path:inset(0 0 0 0)}}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes swing{0%,100%{transform:rotate(0)}30%{transform:rotate(14deg)}70%{transform:rotate(-10deg)}}
+button{font:500 14px 'Poppins',system-ui,sans-serif;border:0;border-radius:999px;padding:10px 22px;background:var(--plan);color:#fff;cursor:pointer}
+button:focus-visible{outline:3px solid var(--plan);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.play *{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="lockup" id="stage" aria-label="UniPlan Student Planner">
+  <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b46e0"/><stop offset="1" stop-color="#22237e"/></linearGradient></defs>
+    <rect class="tile" x="4" y="4" width="112" height="112" rx="30"/>
+    <path class="band" d="M39 57v15c0 8 42 8 42 0V57L60 66z"/>
+    <path class="cap-fill" d="M60 28L98 45 60 62 22 45z"/>
+    <path class="cap-line" pathLength="1" d="M60 28L98 45 60 62 22 45z"/>
+    <path class="cap-line" pathLength="1" d="M39 57v15c0 8 42 8 42 0V57"/>
+    <g class="tassel">
+      <line x1="92" y1="46" x2="92" y2="70" stroke="#ffc83d" stroke-width="3" stroke-linecap="round"/>
+      <rect x="88" y="68" width="8" height="12" rx="3" fill="#ffc83d"/>
+    </g>
+  </svg>
+  <div class="text">
+    <div class="word" aria-hidden="true"><span style="--i:0">U</span><span style="--i:1">n</span><span style="--i:2">i</span><span class="p" style="--i:3">P</span><span class="p" style="--i:4">l</span><span class="p" style="--i:5">a</span><span class="p" style="--i:6">n</span></div>
+    <div class="sub">Student Planner</div>
+  </div>
+</div>
+<script>
+const s=document.getElementById('stage');
+function play(){s.classList.remove('play');void s.offsetWidth;s.classList.add('play')}
+s.addEventListener('click',play);
+play();
+</script>
+</body>
+</html>
