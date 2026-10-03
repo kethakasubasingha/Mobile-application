@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "571366798998",
+    "project_id": "uniplan-4251b",
+    "storage_bucket": "uniplan-4251b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571366798998:android:ba33027a7685185002b4b7",
+        "android_client_info": {
+          "package_name": "com.uniplan.student.uniplan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "571366798998-ghes7in1m0vn59pnd0s5ci68qbg7qggq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHii3D5dWHEhcr4W4QTcMneUtDbfH-nP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "571366798998-ghes7in1m0vn59pnd0s5ci68qbg7qggq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
